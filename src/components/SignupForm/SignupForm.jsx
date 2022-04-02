@@ -56,7 +56,11 @@ const SignupForm = () => {
                 })
                 navigate('/inicio-sesion')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setShowMessage(true)
+                setMessageInfo({ title: 'Ha habido un error', desc: 'Por favor, rellena todos los campos' })
+            })
     }
 
 

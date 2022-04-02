@@ -1,11 +1,11 @@
-.aboutUs{
+.aboutUs {
     margin-top: 50px;
     text-align: justify;
     font-size: 16px;
     font-weight: 300;
 }
 
-.titleAboutUs{
+.titleAboutUs {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
 }

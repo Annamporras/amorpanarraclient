@@ -3,8 +3,8 @@ import authService from '../../services/auth.service'
 import { Form, Button, Card, Container } from 'react-bootstrap'
 import './LoginForm.css'
 import { useNavigate } from "react-router-dom"
-import {AuthContext} from '../../context/Auth.context'
-import {MessageContext} from '../../context/UserMessage.context'
+import { AuthContext } from '../../context/Auth.context'
+import { MessageContext } from '../../context/UserMessage.context'
 
 const LoginForm = () => {
 
@@ -40,13 +40,21 @@ const LoginForm = () => {
                 setMessageInfo({ title: 'Éxito', desc: 'Sesión iniciada correctamente' })
                 navigate('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setloginForm({
+                    email: '',
+                    password: ''
+                })
+                setShowMessage(true)
+                setMessageInfo({ title: 'Ha habido un error', desc: 'email o contraseña incorrecta' })
+                console.log(err)
+            })
     }
 
     return (
         <Card >
-        <Container>
-            
+            <Container>
+
                 <Form onSubmit={handleSubmit}>
 
                     <Form.Group className="mb-3 mt-3">
@@ -60,11 +68,11 @@ const LoginForm = () => {
                     < div className="d-grid gap-2 mb-3" >
                         <Button variant="warning" type="submit">Iniciar sesión</Button>
                     </div>
-               
+
 
                 </Form>
-            
-        </Container>
+
+            </Container>
         </Card>
     )
 }
